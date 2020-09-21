@@ -11,6 +11,8 @@ export const App = () => {
   return (
    <>
         <RouterApp />
+        <RouterApp />
+
   </>
   )
 }
