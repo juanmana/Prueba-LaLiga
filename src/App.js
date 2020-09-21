@@ -1,28 +1,25 @@
-import React,{useEffect,useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import './App.css';
-import {startGetUsers} from './redux/actions/users'
-
-function App(props) {
+import React from 'react';
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import RouterApp from "./router";
 
 
-  const dispatch = useDispatch();
-  const [users , setUsers] = useState([])
+export const App = () => {
 
-  useEffect(()=>{
 
-    if(users.length === 0){
-     dispatch(startGetUsers())
-    setUsers([{},{}]);
-    }
-
-  })
 
   return (
-    <div className="App">
-      Redux
-    </div>
-  );
+   <>
+        <RouterApp />
+  </>
+  )
 }
 
-export default App;
+
+
+export default withRouter(
+  connect(
+    null,
+    null
+  )(App)
+);

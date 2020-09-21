@@ -7,7 +7,7 @@ import history from "./utils/helpers/history";
 
 
 
-const RouterComponent = () => {
+const RouterApp = () => {
     return (
       <Router history={history}>
         <Switch>
