@@ -4,7 +4,7 @@ import { routerReducer, routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 import { createLogger } from "redux-logger";
 import { all } from "redux-saga/effects";
-import history from "./utils/helpers/history";
+import history from "./history/history";
 
 
 
