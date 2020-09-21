@@ -35,6 +35,14 @@ export const getUsers = (url) =>
       throw error;
     });
 
+    export const makePatchReq = params =>
+  axios
+    .patch(params.url, params.data)
+    .then(res => res)
+    .catch(error => {
+      throw error;
+    });
+
 
     const action = type => store.dispatch({ type });
     export const logOut = () => {
