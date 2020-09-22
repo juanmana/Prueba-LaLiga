@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import UserLoading from "../../../components/userLoading";
+import React,{useState,useEffect} from "react";
+import UserLoading from "../../components/userLoading";
 import * as actions from "./actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 
 
-export const usersList = (props) => {
+export const UsersList = (props) => {
 
 
 
@@ -25,17 +25,17 @@ export const usersList = (props) => {
 
 
 
-    handleLoadMore = e => {
+    const handleLoadMore = e => {
         e.preventDefault();
 
         request();
       };
 
 
-      request = () => {
+      const request = () => {
         props.get("&page=" + props.next_page);
       };
-      handleDelete = (id, e) => {
+     const handleDelete = (id, e) => {
         e.preventDefault();
         const confirmed = window.confirm(
           "Are you sure you want to delete this user?"
@@ -46,7 +46,7 @@ export const usersList = (props) => {
       };
 
 
-      renderFarm = (items =[]) => {
+     const  renderFarm = (items =[]) => {
         return items.map((item, index) => {
           return (
             <Row key={index} id={item.id}>
@@ -59,7 +59,7 @@ export const usersList = (props) => {
               </UserInfo>
               <button
                 className="btn delete"
-                onClick={e => this.handleDelete(item.id, e)}
+                onClick={e => handleDelete(item.id, e)}
               >
                 Delete
               </button>
@@ -79,16 +79,16 @@ export const usersList = (props) => {
 
 
         <>
-        {this.renderFarm(data)}
+        {renderFarm(data)}
         <UserLoading isLoading={loading} />
         <div style={{ textAlign: "center" }}>
           {total_pages >= next_page && !loading && (
-            <button className="btn load_more" onClick={this.handleLoadMore}>
+            <button className="btn load_more" onClick={handleLoadMore}>
               Load more...
             </button>
           )}
           {failure && !loading && (
-            <button className="btn try_again" onClick={this.handleLoadMore}>
+            <button className="btn try_again" onClick={handleLoadMore}>
               Try again
             </button>
           )}
@@ -102,32 +102,32 @@ export const usersList = (props) => {
 
     }
 
-    const mapStateToProps = state => ({
-        loading: state.usersList.loading,
-        failure: state.usersList.failure,
-        data: state.usersList.data,
-        next_page: state.usersList.next_page,
-        total_pages: state.usersList.total_pages
-      });
-      const mapDispatchToProps = dispatch => {
-        const { get, deleteItem } = actions;
-        return bindActionCreators(
-          { get, deleteItem },
-          dispatch
-        );
-      };
-      UsersList.propTypes = {
-          loading : PropTypes.bool,
-          failure: PropTypes.bool,
-          data: PropTypes.array,
-          next_page: PropTypes.number,
-          total_pages: PropTypes.number,
-          get: PropTypes.func,
-          deleteItem: PropTypes.func,
-      };
-      export default connect(
-        mapStateToProps,
-        mapDispatchToProps
-      )(UsersList);
+    // const mapStateToProps = (state) => ({
+    //     loading: state.usersList.loading,
+    //     failure: state.usersList.failure,
+    //     data: state.usersList.data,
+    //     next_page: state.usersList.next_page,
+    //     total_pages: state.usersList.total_pages
+    //   });
+    //   const mapDispatchToProps = dispatch => {
+    //     const { get, deleteItem } = actions;
+    //     return bindActionCreators(
+    //       { get, deleteItem },
+    //       dispatch
+    //     );
+    //   };
+    //   UsersList.propTypes = {
+    //       loading : PropTypes.bool,
+    //       failure: PropTypes.bool,
+    //       data: PropTypes.array,
+    //       next_page: PropTypes.number,
+    //       total_pages: PropTypes.number,
+    //       get: PropTypes.func,
+    //       deleteItem: PropTypes.func,
+    //   };
+    //   export default connect(
+    //     mapStateToProps,
+    //     mapDispatchToProps
+    //   )(UsersList);
       
 

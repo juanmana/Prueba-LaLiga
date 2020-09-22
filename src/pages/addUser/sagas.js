@@ -4,7 +4,7 @@ import * as actions from "./actions";
 import * as service from "../../services";
 import {store} from "../../store";
 import {push} from "react-router-redux";
-import * as userListActions from "../home/usersList/actions";
+import * as userListActions from "../home/actions";
 
 
 

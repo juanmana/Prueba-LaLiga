@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import * as actions from "./actions";
 import { connect } from "react-redux";
 import PublicHead from "../../components/publicHead";
@@ -25,13 +25,13 @@ export const AddUsers = (props) => {
     });
 
 
-    handleChange = e => {
+     const handleChange = e => {
         const { name, value } = e.target;
         setUsers({ [name]: value });
     };
 
 
-    handleSubmit = e => {
+     const handleSubmit = e => {
         e.preventDefault();
         setUsers({ submitted: true });
         const { first_name, last_name} = users;
@@ -55,7 +55,7 @@ export const AddUsers = (props) => {
       <DefaultLayout title={title}>
         <PublicHead title={title} />
           <div className="form-box">
-              <form name="form" onSubmit={this.handleSubmit}>
+              <form name="form" onSubmit={handleSubmit}>
                   <div className="form-group">
                       <label htmlFor="first_name">First Name</label>
                       <input
@@ -63,7 +63,7 @@ export const AddUsers = (props) => {
                           name="first_name"
                           className={'form-input' + (submitted && !first_name ? ' error' : '')}
                           value={first_name}
-                          onChange={this.handleChange}
+                          onChange={handleChange}
                           disabled={loading}
                           placeholder="Mohsen"
                       />
@@ -78,7 +78,7 @@ export const AddUsers = (props) => {
                           name="last_name"
                           className={'form-input' + (submitted && !last_name ? ' error' : '')}
                           value={last_name}
-                          onChange={this.handleChange}
+                          onChange={handleChange}
                           disabled={loading}
                           placeholder="Barati"
                       />
@@ -110,7 +110,7 @@ export const AddUsers = (props) => {
         const {  set  } = actions;
         return bindActionCreators({ set }, dispatch);
       };
-      Add.propTypes = {
+      AddUsers.propTypes = {
           loading : PropTypes.bool,
           set: PropTypes.func,
       };

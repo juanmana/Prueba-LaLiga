@@ -2,7 +2,7 @@
 import React from 'react'
 import PublicHead from "../../components/publicHead";
 import DefaultLayout from "../../layouts/defaultLayout";
-import UsersList from "./usersList";
+import {UsersList} from "./usersList";
 
 const Home = () => {
         const title = "Home";

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import RouterApp from "./router";
+import GlobalStyle from "./theme/injectGlobal";
 
 
 export const App = () => {
@@ -10,7 +11,7 @@ export const App = () => {
 
   return (
    <>
-        <RouterApp />
+        <GlobalStyle />
         <RouterApp />
 
   </>

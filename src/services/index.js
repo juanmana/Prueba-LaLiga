@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as config from "../config";
-import { store } from "../../store";
+import { store } from "../store";
 import { push } from "react-router-redux";
 
 
